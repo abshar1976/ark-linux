@@ -225,7 +225,7 @@
         </div>
         <div style="text-align:center">
           <!-- Set data-url to the public address of the ISO once it is uploaded. -->
-          <a class="btn primary" id="dl" data-url="" href="#download">Download ISO</a>
+          <a class="btn primary" id="dl" data-url="https://github.com/abshar1976/ark-linux/releases/download/v0.1/ark-0.1-2026.11.11-x86_64.iso" href="#download">Download ISO</a>
           <p id="dl-note" style="margin:14px 0 0;font-size:14px;color:var(--muted)"></p>
         </div>
       </div>
@@ -250,7 +250,7 @@
   const note = document.getElementById('dl-note');
   if (dl.dataset.url) {
     dl.href = dl.dataset.url;
-    note.textContent = 'Direct download';
+    note.textContent = 'Direct download from GitHub Releases';
   } else {
     dl.setAttribute('aria-disabled', 'true');
     dl.style.opacity = '.55';
