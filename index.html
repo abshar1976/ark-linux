@@ -155,12 +155,12 @@
     <div class="wrap">
       <img class="logo" src="img/logo.svg" alt="Ark Linux logo">
       <h1>Ark Linux.<br><span>Small. Fast. Yours.</span></h1>
-      <p class="lead">A lightweight Linux distribution built on CachyOS, with a trimmed-down KDE Plasma desktop, a simple graphical installer and its own look.</p>
+      <p class="lead">A lightweight Linux distribution built on CachyOS, with a trimmed-down KDE Plasma desktop, a graphical installer with dual-boot support, and its own look.</p>
       <div class="btns">
-        <a class="btn primary" href="#download">Download 0.1</a>
+        <a class="btn primary" href="#download">Download 0.2</a>
         <a class="btn ghost" href="#screenshots">See it</a>
       </div>
-      <p class="meta">Version 0.1 · 64-bit · rolling release · made by Syed Rayyan ul Haque</p>
+      <p class="meta">Version 0.2 · 64-bit · rolling release · made by Syed Rayyan ul Haque</p>
     </div>
   </div>
 
@@ -169,9 +169,9 @@
       <h2>A mini CachyOS</h2>
       <p class="sub">Ark keeps what makes CachyOS quick and leaves out most of the rest, so you start from a clean, small desktop and add what you need.</p>
       <div class="grid">
-        <div class="card"><h3>CachyOS underneath</h3><p>The CachyOS kernel, repositories and system tweaks. CPUs that support x86-64-v3 get the optimised package builds automatically at install time.</p></div>
+        <div class="card"><h3>CachyOS underneath</h3><p>The CachyOS kernel, repositories and system tweaks. On CPUs that support x86-64-v3 the optimised package repositories are enabled automatically.</p></div>
         <div class="card"><h3>Small KDE Plasma</h3><p>A minimal Plasma desktop on Wayland with a file manager, terminal, text editor, archive tool and Firefox. No X server, no bundled office suite.</p></div>
-        <div class="card"><h3>Graphical installer</h3><p>A short wizard asks for the disk, your user, timezone, language and keyboard, then installs and shows its progress.</p></div>
+        <div class="card"><h3>Installer with dual-boot</h3><p>Install next to Windows or another Linux, replace one partition, use the whole disk, or partition by hand. No internet needed, and the boot menu lists every system.</p></div>
         <div class="card"><h3>Two themes</h3><p>Ark Mocha, a soft dark pastel look, and Ark Dock, a deeper dark look with a top bar and a floating dock. Switch in System Settings.</p></div>
         <div class="card"><h3>Chaotic-AUR ready</h3><p>The Chaotic-AUR repository is enabled out of the box, so prebuilt AUR packages install with plain <code>pacman</code>.</p></div>
         <div class="card"><h3>Rolling release</h3><p>Updates come straight from the CachyOS and Arch repositories with <code>sudo pacman -Syu</code>. Ark's branding survives updates.</p></div>
@@ -182,11 +182,13 @@
   <section id="screenshots" class="alt">
     <div class="wrap">
       <h2>Screenshots</h2>
-      <p class="sub">Taken from Ark Linux 0.1 running in a virtual machine.</p>
+      <p class="sub">Taken from Ark Linux running in a virtual machine.</p>
       <div class="shots">
         <figure><img src="img/theme-ark-mocha.webp" width="1280" height="800" loading="lazy" alt="Ark Mocha theme with the file manager open"><figcaption><b>Ark Mocha</b> — the default theme</figcaption></figure>
         <figure><img src="img/theme-ark-dock.webp" width="1280" height="800" loading="lazy" alt="Ark Dock theme with a top bar and a floating dock"><figcaption><b>Ark Dock</b> — top bar and floating dock</figcaption></figure>
-        <figure><img src="img/installer-running.webp" width="1280" height="800" loading="lazy" alt="The installer downloading and installing packages"><figcaption><b>Installer</b> — progress while installing</figcaption></figure>
+        <figure><img src="img/installer-alongside.webp" width="1280" height="800" loading="lazy" alt="The installer offering to install alongside an existing system"><figcaption><b>Installer</b> — install alongside another system</figcaption></figure>
+        <figure><img src="img/installer-installing.webp" width="1280" height="800" loading="lazy" alt="The installer copying the system with a progress bar"><figcaption><b>Installing</b> — progress and slideshow</figcaption></figure>
+        <figure><img src="img/boot-menu.webp" width="1280" height="800" loading="lazy" alt="Boot menu listing Ark Linux and Windows Boot Manager"><figcaption><b>Boot menu</b> — choose a system at startup</figcaption></figure>
         <figure><img src="img/installed-login.webp" width="1280" height="800" loading="lazy" alt="Login screen of an installed Ark Linux system"><figcaption><b>Login screen</b> — after installation</figcaption></figure>
       </div>
     </div>
@@ -195,15 +197,15 @@
   <section id="install">
     <div class="wrap">
       <h2>How to install</h2>
-      <p class="sub">You need a 64-bit PC that boots in UEFI mode and an internet connection during installation.</p>
+      <p class="sub">You need a 64-bit PC that boots in UEFI mode. No internet connection is required.</p>
       <ol class="steps">
         <li><b>Download the ISO</b><span>Get the image below and check its SHA-256 checksum.</span></li>
         <li><b>Write it to a USB stick</b><span>Use a tool such as Ventoy, balenaEtcher or <code>dd</code>. In a virtual machine, attach the ISO as a SATA CD drive and enable EFI.</span></li>
-        <li><b>Boot from it</b><span>Ark starts straight into the live desktop. Connect to Wi-Fi from the network icon if you are not on a cable.</span></li>
-        <li><b>Run “Install Ark Linux”</b><span>Double-click the icon on the desktop and follow the wizard. The installer erases the whole disk you choose.</span></li>
-        <li><b>Restart</b><span>Remove the USB stick when the computer restarts and log in with the user you created.</span></li>
+        <li><b>Boot from it</b><span>Ark starts straight into the live desktop, where you can try it before installing.</span></li>
+        <li><b>Run “Install Ark Linux”</b><span>Double-click the icon on the desktop. On the disk page, choose Install alongside to keep your current system, or Erase disk to use the whole disk.</span></li>
+        <li><b>Restart</b><span>Remove the USB stick when the computer restarts. With more than one system installed, the boot menu lets you pick one.</span></li>
       </ol>
-      <p class="note"><b>Before you install:</b> Ark Linux 0.1 is an early release. The installer uses one entire disk and does not set up dual-boot, so back up anything you want to keep. It has been tested in virtual machines, not yet on a wide range of real hardware.</p>
+      <p class="note"><b>Before you install:</b> Ark Linux 0.2 is an early release. Back up your data first, especially before installing next to another system, because resizing partitions always carries some risk. It has been tested in virtual machines; dual-boot was tested against a stand-in system, not a real Windows installation.</p>
     </div>
   </section>
 
@@ -214,18 +216,18 @@
       <div class="download">
         <div>
           <dl>
-            <dt>Version</dt><dd>0.1 (2026.11.11)</dd>
-            <dt>File</dt><dd><code>ark-0.1-2026.11.11-x86_64.iso</code></dd>
-            <dt>Size</dt><dd>1.7 GiB</dd>
+            <dt>Version</dt><dd>0.2 (2026.11.11)</dd>
+            <dt>File</dt><dd><code>ark-0.2-2026.11.11-x86_64.iso</code></dd>
+            <dt>Size</dt><dd>1.8 GiB</dd>
             <dt>Architecture</dt><dd>x86-64, UEFI</dd>
             <dt>Desktop</dt><dd>KDE Plasma (Wayland)</dd>
           </dl>
           <p style="margin:18px 0 0;font-size:14px;color:var(--muted)">SHA-256</p>
-          <span class="hash">92245714a501b74f682c77099c92e9fd4cca03fd284b44639cbfb5ce88fdf912</span>
+          <span class="hash">8da0ee66ace315212ccbe920dce91d1bf2e6ef51783759c47496fb1976585e4b</span>
         </div>
         <div style="text-align:center">
           <!-- Set data-url to the public address of the ISO once it is uploaded. -->
-          <a class="btn primary" id="dl" data-url="https://github.com/abshar1976/ark-linux/releases/download/v0.1/ark-0.1-2026.11.11-x86_64.iso" href="#download">Download ISO</a>
+          <a class="btn primary" id="dl" data-url="https://github.com/abshar1976/ark-linux/releases/download/v0.2/ark-0.2-2026.11.11-x86_64.iso" href="#download">Download ISO</a>
           <p id="dl-note" style="margin:14px 0 0;font-size:14px;color:var(--muted)"></p>
         </div>
       </div>
