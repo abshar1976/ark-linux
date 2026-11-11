@@ -4,7 +4,7 @@ A lightweight Linux distribution based on CachyOS, with a trimmed-down KDE Plasm
 desktop, a graphical installer and its own look.
 
 - Website: https://abshar1976.github.io/ark-linux/
-- Download: see [Releases](https://github.com/abshar1976/ark-linux/releases)
+- Download: see [Releases](https://github.com/abshar1976/ark-linux/releases) (editions: KDE Plasma, Hyprland, XFCE, Cinnamon)
 
 Made by Syed Rayyan ul Haque
 ([Instagram](https://www.instagram.com/ryanhq321/),

@@ -134,6 +134,12 @@
   }
   footer .social a:hover { border-color: var(--teal); }
   @media (max-width: 620px) { .nav nav { gap: 14px; } .nav nav a.opt { display: none; } }
+  .editions { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .edition { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; min-width: 0; display: grid; gap: 10px; align-content: start; }
+  .edition h3 { margin: 0; font-size: 20px; }
+  .edition p { margin: 0; color: var(--muted); font-size: 15px; }
+  .edition .btn { text-align: center; }
+  .edition .small { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -155,12 +161,12 @@
     <div class="wrap">
       <img class="logo" src="img/logo.svg" alt="Ark Linux logo">
       <h1>Ark Linux.<br><span>Small. Fast. Yours.</span></h1>
-      <p class="lead">A lightweight Linux distribution built on CachyOS, with a trimmed-down KDE Plasma desktop, a graphical installer with dual-boot support, and its own look.</p>
+      <p class="lead">A lightweight Linux distribution built on CachyOS, in four desktop editions: KDE Plasma, Hyprland, XFCE and Cinnamon. One installer with dual-boot support, and its own look.</p>
       <div class="btns">
-        <a class="btn primary" href="#download">Download 0.2</a>
+        <a class="btn primary" href="#download">Download 0.3</a>
         <a class="btn ghost" href="#screenshots">See it</a>
       </div>
-      <p class="meta">Version 0.2 · 64-bit · rolling release · made by Syed Rayyan ul Haque</p>
+      <p class="meta">Version 0.3 · 64-bit · rolling release · made by Syed Rayyan ul Haque</p>
     </div>
   </div>
 
@@ -170,9 +176,9 @@
       <p class="sub">Ark keeps what makes CachyOS quick and leaves out most of the rest, so you start from a clean, small desktop and add what you need.</p>
       <div class="grid">
         <div class="card"><h3>CachyOS underneath</h3><p>The CachyOS kernel, repositories and system tweaks. On CPUs that support x86-64-v3 the optimised package repositories are enabled automatically.</p></div>
-        <div class="card"><h3>Small KDE Plasma</h3><p>A minimal Plasma desktop on Wayland with a file manager, terminal, text editor, archive tool and Firefox. No X server, no bundled office suite.</p></div>
+        <div class="card"><h3>Four desktops</h3><p>KDE Plasma, Hyprland, XFCE or Cinnamon, one ISO each. Every edition is a small install with a file manager, terminal, text editor and Firefox, and no bundled office suite.</p></div>
         <div class="card"><h3>Installer with dual-boot</h3><p>Install next to Windows or another Linux, replace one partition, use the whole disk, or partition by hand. No internet needed, and the boot menu lists every system.</p></div>
-        <div class="card"><h3>Two themes</h3><p>Ark Mocha, a soft dark pastel look, and Ark Dock, a deeper dark look with a top bar and a floating dock. Switch in System Settings.</p></div>
+        <div class="card"><h3>Three themes on KDE</h3><p>Ark Mocha, a soft dark pastel look; Ark Dock, with a top bar and a floating dock; and Ark Shirayuki, a white snow-and-ice look. Switch in System Settings.</p></div>
         <div class="card"><h3>Chaotic-AUR ready</h3><p>The Chaotic-AUR repository is enabled out of the box, so prebuilt AUR packages install with plain <code>pacman</code>.</p></div>
         <div class="card"><h3>Rolling release</h3><p>Updates come straight from the CachyOS and Arch repositories with <code>sudo pacman -Syu</code>. Ark's branding survives updates.</p></div>
       </div>
@@ -186,6 +192,10 @@
       <div class="shots">
         <figure><img src="img/theme-ark-mocha.webp" width="1280" height="800" loading="lazy" alt="Ark Mocha theme with the file manager open"><figcaption><b>Ark Mocha</b> — the default theme</figcaption></figure>
         <figure><img src="img/theme-ark-dock.webp" width="1280" height="800" loading="lazy" alt="Ark Dock theme with a top bar and a floating dock"><figcaption><b>Ark Dock</b> — top bar and floating dock</figcaption></figure>
+        <figure><img src="img/theme-ark-shirayuki.webp" width="1280" height="800" loading="lazy" alt="Ark Shirayuki white theme with a snow wallpaper"><figcaption><b>Ark Shirayuki</b> — the white theme</figcaption></figure>
+        <figure><img src="img/edition-hyprland.webp" width="1280" height="800" loading="lazy" alt="Hyprland edition desktop"><figcaption><b>Hyprland edition</b></figcaption></figure>
+        <figure><img src="img/edition-xfce.webp" width="1280" height="800" loading="lazy" alt="XFCE edition desktop"><figcaption><b>XFCE edition</b></figcaption></figure>
+        <figure><img src="img/edition-cinnamon.webp" width="1280" height="800" loading="lazy" alt="Cinnamon edition desktop"><figcaption><b>Cinnamon edition</b></figcaption></figure>
         <figure><img src="img/installer-alongside.webp" width="1280" height="800" loading="lazy" alt="The installer offering to install alongside an existing system"><figcaption><b>Installer</b> — install alongside another system</figcaption></figure>
         <figure><img src="img/installer-installing.webp" width="1280" height="800" loading="lazy" alt="The installer copying the system with a progress bar"><figcaption><b>Installing</b> — progress and slideshow</figcaption></figure>
         <figure><img src="img/boot-menu.webp" width="1280" height="800" loading="lazy" alt="Boot menu listing Ark Linux and Windows Boot Manager"><figcaption><b>Boot menu</b> — choose a system at startup</figcaption></figure>
@@ -199,36 +209,48 @@
       <h2>How to install</h2>
       <p class="sub">You need a 64-bit PC that boots in UEFI mode. No internet connection is required.</p>
       <ol class="steps">
-        <li><b>Download the ISO</b><span>Get the image below and check its SHA-256 checksum.</span></li>
+        <li><b>Download an edition</b><span>Pick the desktop you want below and check the file's SHA-256 checksum.</span></li>
         <li><b>Write it to a USB stick</b><span>Use a tool such as Ventoy, balenaEtcher or <code>dd</code>. In a virtual machine, attach the ISO as a SATA CD drive and enable EFI.</span></li>
         <li><b>Boot from it</b><span>Ark starts straight into the live desktop, where you can try it before installing.</span></li>
         <li><b>Run “Install Ark Linux”</b><span>Double-click the icon on the desktop. On the disk page, choose Install alongside to keep your current system, or Erase disk to use the whole disk.</span></li>
         <li><b>Restart</b><span>Remove the USB stick when the computer restarts. With more than one system installed, the boot menu lets you pick one.</span></li>
       </ol>
-      <p class="note"><b>Before you install:</b> Ark Linux 0.2 is an early release. Back up your data first, especially before installing next to another system, because resizing partitions always carries some risk. It has been tested in virtual machines; dual-boot was tested against a stand-in system, not a real Windows installation.</p>
+      <p class="note"><b>Before you install:</b> Ark Linux 0.3 is an early release. Back up your data first, especially before installing next to another system, because resizing partitions always carries some risk. It has been tested in virtual machines; dual-boot was tested against a stand-in system, not a real Windows installation.</p>
     </div>
   </section>
 
   <section id="download" class="alt">
     <div class="wrap">
       <h2>Download</h2>
-      <p class="sub">One image for both trying Ark live and installing it.</p>
-      <div class="download">
-        <div>
-          <dl>
-            <dt>Version</dt><dd>0.2 (2026.11.11)</dd>
-            <dt>File</dt><dd><code>ark-0.2-2026.11.11-x86_64.iso</code></dd>
-            <dt>Size</dt><dd>1.8 GiB</dd>
-            <dt>Architecture</dt><dd>x86-64, UEFI</dd>
-            <dt>Desktop</dt><dd>KDE Plasma (Wayland)</dd>
-          </dl>
-          <p style="margin:18px 0 0;font-size:14px;color:var(--muted)">SHA-256</p>
-          <span class="hash">8da0ee66ace315212ccbe920dce91d1bf2e6ef51783759c47496fb1976585e4b</span>
+      <p class="sub">Version 0.3 (2026.11.11), 64-bit, UEFI. Each image is both a live system to try and the installer.</p>
+      <div class="editions">
+        <div class="edition">
+          <h3>KDE Plasma</h3>
+          <p>Wayland, three Ark themes · 1.8 GiB</p>
+          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3/ark-kde-0.3-2026.11.11-x86_64.iso">Download</a>
+          <p class="small">SHA-256</p>
+          <span class="hash">ad176c661c8bef5203c9342903334194133d5850da8635e95e1744d6d751112f</span>
         </div>
-        <div style="text-align:center">
-          <!-- Set data-url to the public address of the ISO once it is uploaded. -->
-          <a class="btn primary" id="dl" data-url="https://github.com/abshar1976/ark-linux/releases/download/v0.2/ark-0.2-2026.11.11-x86_64.iso" href="#download">Download ISO</a>
-          <p id="dl-note" style="margin:14px 0 0;font-size:14px;color:var(--muted)"></p>
+        <div class="edition">
+          <h3>Hyprland</h3>
+          <p>Tiling Wayland compositor with Waybar · 1.7 GiB</p>
+          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3/ark-hyprland-0.3-2026.11.11-x86_64.iso">Download</a>
+          <p class="small">SHA-256</p>
+          <span class="hash">82c3d9f9a273a685470c0e5d55024c42ea66e6362e382e103a8c84a130e58f8c</span>
+        </div>
+        <div class="edition">
+          <h3>XFCE</h3>
+          <p>Light classic desktop · 1.5 GiB</p>
+          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3/ark-xfce-0.3-2026.11.11-x86_64.iso">Download</a>
+          <p class="small">SHA-256</p>
+          <span class="hash">d06096ae912e5fb737ac9867cc58fbc4c7a44716a5ef646420e4c5e41417d963</span>
+        </div>
+        <div class="edition">
+          <h3>Cinnamon</h3>
+          <p>Traditional desktop · 1.7 GiB</p>
+          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3/ark-cinnamon-0.3-2026.11.11-x86_64.iso">Download</a>
+          <p class="small">SHA-256</p>
+          <span class="hash">4c1f813aee4cb30f69bb43a9d576294fc6b6ab6d75729ba46df77dbb62a60139</span>
         </div>
       </div>
     </div>
@@ -246,20 +268,6 @@
   </div>
 </footer>
 
-<script>
-  // The download button stays inactive until the ISO has a public address.
-  const dl = document.getElementById('dl');
-  const note = document.getElementById('dl-note');
-  if (dl.dataset.url) {
-    dl.href = dl.dataset.url;
-    note.textContent = 'Direct download from GitHub Releases';
-  } else {
-    dl.setAttribute('aria-disabled', 'true');
-    dl.style.opacity = '.55';
-    dl.style.cursor = 'not-allowed';
-    dl.addEventListener('click', e => e.preventDefault());
-    note.textContent = 'The download link will be added when the ISO is uploaded.';
-  }
-</script>
+
 </body>
 </html>
