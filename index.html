@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ark Linux — a small, fast CachyOS-based desktop</title>
+<meta name="description" content="Ark Linux is a lightweight Linux distribution based on CachyOS, with a trimmed-down KDE Plasma desktop and a graphical installer. Made by Syed Rayyan ul Haque.">
+<meta name="author" content="Syed Rayyan ul Haque">
+<link rel="icon" type="image/svg+xml" href="img/logo.svg">
+<style>
+  :root {
+    --bg: #11111b;
+    --base: #1e1e2e;
+    --surface: #313244;
+    --line: #3b3d52;
+    --text: #cdd6f4;
+    --muted: #a6adc8;
+    --teal: #5ec4b6;
+    --blue: #7aa2f7;
+    --peach: #fab387;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", "Noto Sans", sans-serif;
+  }
+  a { color: var(--blue); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+  img { max-width: 100%; height: auto; display: block; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  header.nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(17, 17, 27, .85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+  .brand img { width: 30px; height: 30px; }
+  .nav nav { margin-left: auto; display: flex; gap: 22px; }
+  .nav nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  .nav nav a:hover { color: var(--text); }
+
+  .hero {
+    background:
+      linear-gradient(180deg, rgba(17,17,27,.55) 0%, rgba(17,17,27,.9) 78%, var(--bg) 100%),
+      url("img/wallpaper.webp") center 35% / cover no-repeat;
+    padding: 96px 0 72px;
+    text-align: center;
+  }
+  .hero img.logo { width: 104px; height: 104px; margin: 0 auto 22px; }
+  .hero h1 { font-size: clamp(38px, 7vw, 64px); line-height: 1.08; margin: 0 0 14px; letter-spacing: -.02em; }
+  .hero h1 span { background: linear-gradient(120deg, var(--teal), var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { max-width: 640px; margin: 0 auto 30px; font-size: 19px; color: var(--muted); }
+  .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 13px 26px; border-radius: 999px;
+    font-weight: 600; text-decoration: none; border: 1px solid transparent;
+  }
+  .btn.primary { background: linear-gradient(120deg, var(--teal), var(--blue)); color: #11111b; }
+  .btn.ghost { border-color: var(--line); color: var(--text); background: rgba(30,30,46,.6); }
+  .btn.ghost:hover { border-color: var(--teal); }
+  .hero .meta { margin-top: 18px; font-size: 14px; color: var(--muted); }
+
+  section { padding: 72px 0; }
+  section h2 { font-size: clamp(26px, 4vw, 34px); margin: 0 0 10px; letter-spacing: -.01em; }
+  section p.sub { color: var(--muted); max-width: 680px; margin: 0 0 34px; }
+
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .card {
+    background: var(--base); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 18px; }
+  .card h3::before {
+    content: ""; display: block; width: 28px; height: 4px; border-radius: 2px; margin-bottom: 14px;
+    background: linear-gradient(90deg, var(--teal), var(--blue));
+  }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .shots { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  figure { margin: 0; background: var(--base); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  figure img { width: 100%; }
+  figcaption { padding: 12px 16px; font-size: 14px; color: var(--muted); }
+  figcaption b { color: var(--text); }
+
+  .alt { background: var(--base); border-block: 1px solid var(--line); }
+  .alt .card { background: var(--bg); }
+
+  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 14px; }
+  ol.steps li {
+    counter-increment: s; position: relative; padding: 18px 20px 18px 66px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  ol.steps li::before {
+    content: counter(s); position: absolute; left: 18px; top: 16px;
+    width: 32px; height: 32px; border-radius: 50%;
+    display: grid; place-items: center; font-weight: 700; color: #11111b;
+    background: linear-gradient(120deg, var(--teal), var(--blue));
+  }
+  ol.steps b { display: block; }
+  ol.steps span { color: var(--muted); font-size: 15px; }
+
+  .download {
+    background: var(--base); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 28px; display: grid; gap: 22px; grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px) { .download { grid-template-columns: 1.1fr 1fr; align-items: center; } }
+  dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 15px; }
+  dt { color: var(--muted); }
+  dd { margin: 0; }
+  code, .hash {
+    font-family: ui-monospace, "JetBrains Mono", "Cascadia Code", monospace; font-size: 13px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px;
+  }
+  .hash { display: block; padding: 10px 12px; overflow-wrap: anywhere; margin-top: 6px; }
+  .note {
+    border-left: 3px solid var(--peach); background: rgba(250,179,135,.08);
+    padding: 12px 16px; border-radius: 0 10px 10px 0; font-size: 15px; color: var(--text); margin-top: 22px;
+  }
+
+  footer { padding: 44px 0 56px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+  footer .wrap { display: grid; gap: 14px; }
+  footer .made { color: var(--text); font-size: 17px; }
+  footer .social { display: flex; gap: 12px; flex-wrap: wrap; }
+  footer .social a {
+    text-decoration: none; color: var(--text); border: 1px solid var(--line);
+    padding: 8px 16px; border-radius: 999px; background: var(--base);
+  }
+  footer .social a:hover { border-color: var(--teal); }
+  @media (max-width: 620px) { .nav nav { gap: 14px; } .nav nav a.opt { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/logo.svg" alt="">Ark Linux</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#screenshots" class="opt">Screenshots</a>
+      <a href="#install" class="opt">Install</a>
+      <a href="#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <img class="logo" src="img/logo.svg" alt="Ark Linux logo">
+      <h1>Ark Linux.<br><span>Small. Fast. Yours.</span></h1>
+      <p class="lead">A lightweight Linux distribution built on CachyOS, with a trimmed-down KDE Plasma desktop, a simple graphical installer and its own look.</p>
+      <div class="btns">
+        <a class="btn primary" href="#download">Download 0.1</a>
+        <a class="btn ghost" href="#screenshots">See it</a>
+      </div>
+      <p class="meta">Version 0.1 · 64-bit · rolling release · made by Syed Rayyan ul Haque</p>
+    </div>
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>A mini CachyOS</h2>
+      <p class="sub">Ark keeps what makes CachyOS quick and leaves out most of the rest, so you start from a clean, small desktop and add what you need.</p>
+      <div class="grid">
+        <div class="card"><h3>CachyOS underneath</h3><p>The CachyOS kernel, repositories and system tweaks. CPUs that support x86-64-v3 get the optimised package builds automatically at install time.</p></div>
+        <div class="card"><h3>Small KDE Plasma</h3><p>A minimal Plasma desktop on Wayland with a file manager, terminal, text editor, archive tool and Firefox. No X server, no bundled office suite.</p></div>
+        <div class="card"><h3>Graphical installer</h3><p>A short wizard asks for the disk, your user, timezone, language and keyboard, then installs and shows its progress.</p></div>
+        <div class="card"><h3>Two themes</h3><p>Ark Mocha, a soft dark pastel look, and Ark Dock, a deeper dark look with a top bar and a floating dock. Switch in System Settings.</p></div>
+        <div class="card"><h3>Chaotic-AUR ready</h3><p>The Chaotic-AUR repository is enabled out of the box, so prebuilt AUR packages install with plain <code>pacman</code>.</p></div>
+        <div class="card"><h3>Rolling release</h3><p>Updates come straight from the CachyOS and Arch repositories with <code>sudo pacman -Syu</code>. Ark's branding survives updates.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screenshots" class="alt">
+    <div class="wrap">
+      <h2>Screenshots</h2>
+      <p class="sub">Taken from Ark Linux 0.1 running in a virtual machine.</p>
+      <div class="shots">
+        <figure><img src="img/theme-ark-mocha.webp" width="1280" height="800" loading="lazy" alt="Ark Mocha theme with the file manager open"><figcaption><b>Ark Mocha</b> — the default theme</figcaption></figure>
+        <figure><img src="img/theme-ark-dock.webp" width="1280" height="800" loading="lazy" alt="Ark Dock theme with a top bar and a floating dock"><figcaption><b>Ark Dock</b> — top bar and floating dock</figcaption></figure>
+        <figure><img src="img/installer-running.webp" width="1280" height="800" loading="lazy" alt="The installer downloading and installing packages"><figcaption><b>Installer</b> — progress while installing</figcaption></figure>
+        <figure><img src="img/installed-login.webp" width="1280" height="800" loading="lazy" alt="Login screen of an installed Ark Linux system"><figcaption><b>Login screen</b> — after installation</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <h2>How to install</h2>
+      <p class="sub">You need a 64-bit PC that boots in UEFI mode and an internet connection during installation.</p>
+      <ol class="steps">
+        <li><b>Download the ISO</b><span>Get the image below and check its SHA-256 checksum.</span></li>
+        <li><b>Write it to a USB stick</b><span>Use a tool such as Ventoy, balenaEtcher or <code>dd</code>. In a virtual machine, attach the ISO as a SATA CD drive and enable EFI.</span></li>
+        <li><b>Boot from it</b><span>Ark starts straight into the live desktop. Connect to Wi-Fi from the network icon if you are not on a cable.</span></li>
+        <li><b>Run “Install Ark Linux”</b><span>Double-click the icon on the desktop and follow the wizard. The installer erases the whole disk you choose.</span></li>
+        <li><b>Restart</b><span>Remove the USB stick when the computer restarts and log in with the user you created.</span></li>
+      </ol>
+      <p class="note"><b>Before you install:</b> Ark Linux 0.1 is an early release. The installer uses one entire disk and does not set up dual-boot, so back up anything you want to keep. It has been tested in virtual machines, not yet on a wide range of real hardware.</p>
+    </div>
+  </section>
+
+  <section id="download" class="alt">
+    <div class="wrap">
+      <h2>Download</h2>
+      <p class="sub">One image for both trying Ark live and installing it.</p>
+      <div class="download">
+        <div>
+          <dl>
+            <dt>Version</dt><dd>0.1 (2026.11.11)</dd>
+            <dt>File</dt><dd><code>ark-0.1-2026.11.11-x86_64.iso</code></dd>
+            <dt>Size</dt><dd>1.7 GiB</dd>
+            <dt>Architecture</dt><dd>x86-64, UEFI</dd>
+            <dt>Desktop</dt><dd>KDE Plasma (Wayland)</dd>
+          </dl>
+          <p style="margin:18px 0 0;font-size:14px;color:var(--muted)">SHA-256</p>
+          <span class="hash">92245714a501b74f682c77099c92e9fd4cca03fd284b44639cbfb5ce88fdf912</span>
+        </div>
+        <div style="text-align:center">
+          <!-- Set data-url to the public address of the ISO once it is uploaded. -->
+          <a class="btn primary" id="dl" data-url="" href="#download">Download ISO</a>
+          <p id="dl-note" style="margin:14px 0 0;font-size:14px;color:var(--muted)"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="made">Ark Linux is made by <b>Syed Rayyan ul Haque</b>.</div>
+    <div class="social">
+      <a href="https://www.instagram.com/ryanhq321/" rel="noopener">Instagram · @ryanhq321</a>
+      <a href="https://www.youtube.com/@SyedRayyanHaque762" rel="noopener">YouTube · @SyedRayyanHaque762</a>
+    </div>
+    <div>Ark Linux is based on <a href="https://cachyos.org/">CachyOS</a> and <a href="https://archlinux.org/">Arch Linux</a> and uses KDE Plasma. It is an independent project and is not affiliated with or endorsed by CachyOS, Arch Linux, KDE or Chaotic-AUR.</div>
+  </div>
+</footer>
+
+<script>
+  // The download button stays inactive until the ISO has a public address.
+  const dl = document.getElementById('dl');
+  const note = document.getElementById('dl-note');
+  if (dl.dataset.url) {
+    dl.href = dl.dataset.url;
+    note.textContent = 'Direct download';
+  } else {
+    dl.setAttribute('aria-disabled', 'true');
+    dl.style.opacity = '.55';
+    dl.style.cursor = 'not-allowed';
+    dl.addEventListener('click', e => e.preventDefault());
+    note.textContent = 'The download link will be added when the ISO is uploaded.';
+  }
+</script>
+</body>
+</html>
