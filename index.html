@@ -3,9 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ark Linux — a small, fast CachyOS-based desktop</title>
-<meta name="description" content="Ark Linux is a lightweight Linux distribution based on CachyOS, with a trimmed-down KDE Plasma desktop and a graphical installer. Made by Syed Rayyan ul Haque.">
+<title>Ark Linux — free CachyOS-based Linux distro (KDE, Hyprland, XFCE, Cinnamon)</title>
+<meta name="description" content="Ark Linux is a free, lightweight Linux distribution based on CachyOS and Arch Linux. Download the KDE Plasma, Hyprland, XFCE or Cinnamon edition, try it live and install it with dual-boot. Made by Syed Rayyan ul Haque.">
+<meta name="keywords" content="Ark Linux, Linux distro, Linux distribution, CachyOS, Arch Linux, Hyprland, KDE Plasma, XFCE, Cinnamon, download ISO, Syed Rayyan ul Haque">
 <meta name="author" content="Syed Rayyan ul Haque">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abshar1976.github.io/ark-linux/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ark Linux">
+<meta property="og:title" content="Ark Linux — small, fast, CachyOS-based Linux">
+<meta property="og:description" content="A free Linux distribution in four editions: KDE Plasma, Hyprland, XFCE and Cinnamon. Live ISO with a dual-boot installer.">
+<meta property="og:url" content="https://abshar1976.github.io/ark-linux/">
+<meta property="og:image" content="https://abshar1976.github.io/ark-linux/img/theme-ark-mocha.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Ark Linux",
+  "applicationCategory": "OperatingSystem",
+  "operatingSystem": "Linux",
+  "softwareVersion": "0.3.4",
+  "description": "A free, lightweight Linux distribution based on CachyOS, with KDE Plasma, Hyprland, XFCE and Cinnamon editions.",
+  "url": "https://abshar1976.github.io/ark-linux/",
+  "downloadUrl": "https://github.com/abshar1976/ark-linux/releases/latest",
+  "screenshot": "https://abshar1976.github.io/ark-linux/img/theme-ark-mocha.webp",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Syed Rayyan ul Haque", "sameAs": ["https://www.instagram.com/ryanhq321/", "https://www.youtube.com/@SyedRayyanHaque762"] }
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="img/logo.svg">
 <style>
   :root {
@@ -163,10 +189,10 @@
       <h1>Ark Linux.<br><span>Small. Fast. Yours.</span></h1>
       <p class="lead">A lightweight Linux distribution built on CachyOS, in four desktop editions: KDE Plasma, Hyprland, XFCE and Cinnamon. One installer with dual-boot support, and its own look.</p>
       <div class="btns">
-        <a class="btn primary" href="#download">Download 0.3</a>
+        <a class="btn primary" href="#download">Download 0.3.4</a>
         <a class="btn ghost" href="#screenshots">See it</a>
       </div>
-      <p class="meta">Version 0.3 · 64-bit · rolling release · made by Syed Rayyan ul Haque</p>
+      <p class="meta">Version 0.3.4 · 64-bit · rolling release · made by Syed Rayyan ul Haque</p>
     </div>
   </div>
 
@@ -216,42 +242,43 @@
         <li><b>Run “Install Ark Linux”</b><span>Double-click the icon on the desktop. On the disk page, choose Install alongside to keep your current system, or Erase disk to use the whole disk.</span></li>
         <li><b>Restart</b><span>Remove the USB stick when the computer restarts. With more than one system installed, the boot menu lets you pick one.</span></li>
       </ol>
-      <p class="note"><b>Before you install:</b> Ark Linux 0.3 is an early release. Back up your data first, especially before installing next to another system, because resizing partitions always carries some risk. It has been tested in virtual machines; dual-boot was tested against a stand-in system, not a real Windows installation.</p>
+      <p class="note"><b>Before you install:</b> Ark Linux 0.3.4 is an early release. Back up your data first, especially before installing next to another system, because resizing partitions always carries some risk. It has been tested in virtual machines; dual-boot was tested against a stand-in system, not a real Windows installation.</p>
+      <p class="note"><b>Install failed?</b> Boot the USB stick, open a terminal and run <code>ark-diskcheck</code>. It checks the disk's health without changing anything and tells you whether the disk is failing.</p>
     </div>
   </section>
 
   <section id="download" class="alt">
     <div class="wrap">
       <h2>Download</h2>
-      <p class="sub">Version 0.3 (2026.11.11), 64-bit, UEFI. Each image is both a live system to try and the installer.</p>
+      <p class="sub">Version 0.3.4 (2026.11.13), 64-bit, UEFI or legacy BIOS. Each image is both a live system to try and the installer.</p>
       <div class="editions">
         <div class="edition">
           <h3>KDE Plasma</h3>
           <p>Wayland, three Ark themes · 1.8 GiB</p>
-          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3/ark-kde-0.3-2026.11.11-x86_64.iso">Download</a>
+          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3.4/ark-kde-0.3.4-2026.11.13-x86_64.iso">Download</a>
           <p class="small">SHA-256</p>
-          <span class="hash">ad176c661c8bef5203c9342903334194133d5850da8635e95e1744d6d751112f</span>
+          <span class="hash">6a5783109a2b2a2ca26d5d7b7a366ff064e657780fb03218a6fd053d0b8afb67</span>
         </div>
         <div class="edition">
           <h3>Hyprland</h3>
-          <p>Tiling Wayland compositor, riced, with about 50 shortcuts · 1.6 GiB · version 0.3.3</p>
-          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3.3/ark-hyprland-0.3.3-2026.11.12-x86_64.iso">Download</a>
+          <p>Tiling Wayland compositor, riced, with about 50 shortcuts · 1.6 GiB</p>
+          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3.4/ark-hyprland-0.3.4-2026.11.13-x86_64.iso">Download</a>
           <p class="small">SHA-256</p>
-          <span class="hash">8346184ad80eacbeac489ace84747ab0ed2ebf45eabca55ad6dd0136ee8cfcac</span>
+          <span class="hash">10e665e346bc40c84a6181fd23f9fcb82b579afa1aa4a88b67957658b034c0c1</span>
         </div>
         <div class="edition">
           <h3>XFCE</h3>
           <p>Light classic desktop · 1.5 GiB</p>
-          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3/ark-xfce-0.3-2026.11.11-x86_64.iso">Download</a>
+          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3.4/ark-xfce-0.3.4-2026.11.13-x86_64.iso">Download</a>
           <p class="small">SHA-256</p>
-          <span class="hash">d06096ae912e5fb737ac9867cc58fbc4c7a44716a5ef646420e4c5e41417d963</span>
+          <span class="hash">0f42003e1a14049a6873c2c6aac1bcde3e527a5bda7bc539a216b56ccfe7b379</span>
         </div>
         <div class="edition">
           <h3>Cinnamon</h3>
           <p>Traditional desktop · 1.7 GiB</p>
-          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3/ark-cinnamon-0.3-2026.11.11-x86_64.iso">Download</a>
+          <a class="btn primary" href="https://github.com/abshar1976/ark-linux/releases/download/v0.3.4/ark-cinnamon-0.3.4-2026.11.13-x86_64.iso">Download</a>
           <p class="small">SHA-256</p>
-          <span class="hash">4c1f813aee4cb30f69bb43a9d576294fc6b6ab6d75729ba46df77dbb62a60139</span>
+          <span class="hash">17a8ce0863587726067a79f782b1d04f1804a0cd7182311c8c6ce37e415e3a04</span>
         </div>
       </div>
       <p class="note"><b>Download slow?</b> GitHub limits the speed of each connection, so a browser download can crawl at under 1 MB/s. A download manager that opens several connections is often 10 to 20 times faster. On Linux, install <code>aria2</code> and run <code>aria2c -x 16 -s 16</code> followed by the download link (right-click Download, copy link). On Windows, use a download manager such as Free Download Manager.</p>
